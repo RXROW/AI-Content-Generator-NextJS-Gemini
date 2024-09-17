@@ -1,6 +1,7 @@
-import { Templates } from '@/data/data';
-import React from 'react'
-import TempleteCard from './TempleteCard';
+"use client";
+import { Templates } from "@/data/data";
+import React, { useEffect, useState } from "react";
+import TempleteCard from "./TempleteCard";
 
 export interface ITemplate {
   name: string;
@@ -10,7 +11,6 @@ export interface ITemplate {
   slug: string;
   aiPromt: string;
   form?: IForm[];
- 
 }
 
 export interface IForm {
@@ -20,16 +20,23 @@ export interface IForm {
   required?: boolean;
 }
 
-
-const TemplateList = () => {
+const TemplateList = ({ userSearchInput }: any) => {
+  const [templeteList, setTempleteList] = useState(Templates);
+  useEffect(() => {
+    if (userSearchInput) {
+      const filterData = Templates.filter((item) =>
+        item.name.toLowerCase().includes(userSearchInput.toLowerCase())
+      );
+      setTempleteList(filterData);
+    }
+  }, [userSearchInput]);
   return (
-    <div className=' grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5  '>
-      {Templates.map((item:ITemplate,index:number)=>
-      <TempleteCard {...item}/>
-      
-      )}
+    <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5  ">
+      {templeteList.map((item: ITemplate, index: number) => (
+        <TempleteCard {...item} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default TemplateList
+export default TemplateList;

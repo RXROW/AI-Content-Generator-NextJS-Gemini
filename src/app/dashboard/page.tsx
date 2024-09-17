@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
 import SearchHero from './_components/SearchHero';
@@ -8,6 +8,9 @@ import TemplateList from './_components/TemplateList';
 
 const Dashboard: React.FC = () => {
   const { user, isLoaded } = useUser(); 
+  const [userSearchInput, setUserSearchInput] = useState<string>("");
+
+
   const router = useRouter();
 
   React.useEffect(() => {
@@ -32,8 +35,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
-      <SearchHero/>
-      <TemplateList/>
+      <SearchHero onSearchInput={(value:string)=>setUserSearchInput(value)}/>
+      <TemplateList userSearchInput={userSearchInput} />
       Dashboard
     </div>
   );

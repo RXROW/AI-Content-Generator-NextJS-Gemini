@@ -1,7 +1,7 @@
 import { Search } from 'lucide-react'
 import React from 'react'
 
-const SearchHero = () => {
+const SearchHero = ({onSearchInput}:any) => {
   return (
     <div className="p-20 bg-gradient-to-br from-purple-400 via-purple-700 to-blue-800 flex justify-center items-center">
       <div className="text-center">
@@ -10,7 +10,7 @@ const SearchHero = () => {
         <div className="w-full flex justify-center">
             <div className="flex gap-2 items-center p-2 border rounded-md bg-white my-5 w-[100%]">
                 <Search className="text-primary" />
-                <input type="text" placeholder="Search" className="bg-transparent w-full outline-none text-black" />
+                <input type="text" placeholder="Search" className="bg-transparent w-full outline-none text-black"  onChange={(event)=>onSearchInput(event.target.value)}/>
             </div>
         </div>
       </div>
