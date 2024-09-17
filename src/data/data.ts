@@ -1,4 +1,4 @@
-export default [
+export const Templates = [
   {
       "name": "Blog Title",
       "desc": "An AI tool that generates blog titles based on your blog information.",
