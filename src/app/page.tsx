@@ -1,30 +1,30 @@
 "use client";
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
-import { useUser } from '@clerk/nextjs';
+import React from "react";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 
 const Home: React.FC = () => {
-  const { user, isLoaded } = useUser(); 
+  const { user, isLoaded } = useUser();
   const router = useRouter();
 
   React.useEffect(() => {
     if (isLoaded) {
       if (!user) {
         // Redirect to sign-in page if user is not authenticated
-        router.replace('/sign-in'); 
+        router.replace("/sign-in");
       }
     }
   }, [isLoaded, user, router]);
 
   if (!isLoaded) {
     // Display a loading message while checking user status
-    return <div className="text-center p-4">Loading...</div>;  
+    return <div className="text-center p-4">Loading...</div>;
   }
 
   if (!user) {
     // Display a redirect message while redirecting
-    return <div className="text-center p-4">Redirecting...</div>; 
+    return <div className="text-center p-4">Redirecting...</div>;
   }
 
   return (
@@ -72,7 +72,12 @@ const Home: React.FC = () => {
               Generate Content, Keywords, and Descriptions with Contentful AI
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Unlock your creative potential with our AI content generator. Designed for writers, marketers, and content creators, our advanced tool uses cutting-edge technology to generate high-quality, personalized content in seconds. Whether you need engaging blog posts, compelling ad copy, or captivating social media updates, our AI assists you every step of the way.
+              Unlock your creative potential with our AI content generator.
+              Designed for writers, marketers, and content creators, our
+              advanced tool uses cutting-edge technology to generate
+              high-quality, personalized content in seconds. Whether you need
+              engaging blog posts, compelling ad copy, or captivating social
+              media updates, our AI assists you every step of the way.
             </p>
           </div>
 
@@ -100,11 +105,16 @@ const Home: React.FC = () => {
                   "Adapt to any content need, from blog posts and social media updates to marketing copy and SEO articles. The AI is designed to handle diverse content requirements, making it a one-stop solution for all your writing needs.",
               },
             ].map((feature, index) => (
-              <div key={index} className="px-8 py-6 border-l-2 border-gray-200 border-opacity-60 shadow-lg rounded-lg">
+              <div
+                key={index}
+                className="px-8 py-6 border-l-2 border-gray-200 border-opacity-60 shadow-lg rounded-lg"
+              >
                 <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">
                   {feature.title}
                 </h2>
-                <p className="leading-relaxed text-base mb-4">{feature.description}</p>
+                <p className="leading-relaxed text-base mb-4">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
