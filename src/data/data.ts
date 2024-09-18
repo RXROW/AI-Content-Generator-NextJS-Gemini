@@ -1,6 +1,7 @@
 export const Templates = [
   {
       "name": "Blog Title",
+       
       "desc": "An AI tool that generates blog titles based on your blog information.",
       "category": "Blog",
       "icon": "https://cdn-icons-png.flaticon.com/128/4693/4693065.png",

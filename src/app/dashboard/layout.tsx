@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex justify-between  ">
+    <div className="flex justify-between bg-slate-100 h-screen  ">
       <div className="md:w-64 hidden md:block fixed   ">
         <SideBar />
       </div>

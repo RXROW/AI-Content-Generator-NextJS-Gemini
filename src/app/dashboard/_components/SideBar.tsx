@@ -33,7 +33,7 @@ const SideBar: React.FC = () => {
   const path = usePathname();
 
   return (
-    <div className="p-5 border-r h-screen flex flex-col items-center ">
+    <div className="p-5 border-r h-screen flex flex-col items-center bg-white ">
       {/* Logo Section */}
       <div className="flex justify-center mb-6">
         <Logo />
