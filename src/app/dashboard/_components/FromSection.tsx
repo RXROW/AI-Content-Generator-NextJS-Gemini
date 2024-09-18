@@ -5,13 +5,15 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Loader2Icon } from "lucide-react";
 
 interface IProps {
   slectedTemplete?: ITemplate;
   userFormInput: any;
+  loading: boolean;
 }
 
-const FromSection = ({ slectedTemplete, userFormInput }: IProps) => {
+const FromSection = ({ slectedTemplete, userFormInput, loading }: IProps) => {
   const [formData, setFormData] = useState<any>();
   const handleInputChange = (event: any) => {
     const { value, name } = event.target;
@@ -61,7 +63,9 @@ const FromSection = ({ slectedTemplete, userFormInput }: IProps) => {
         <Button
           type="submit"
           className="w-full bg-mainColor hover:bg-transparent hover:text-mainColor hover:ring-mainColor ring-1 ring-transparent py-5"
+          disabled={loading}
         >
+          {loading&&<Loader2Icon className=" animate-spin "/>}
           Generate Content
         </Button>
       </form>
