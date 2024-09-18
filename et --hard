@@ -1,0 +1,60 @@
+[33mcommit fd16e55a7a2def4a1f5786294d1fedd3e0288c6d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Wed Sep 18 09:34:48 2024 +0300
+
+    History Page
+
+[33mcommit cac6f6322c4f12b52d05cc76844f286a5e3307e3[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Wed Sep 18 08:00:31 2024 +0300
+
+    Save AI Generate Output to DB
+
+[33mcommit a10392d2135bfcf7315a824f196ffcd086da10fc[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Wed Sep 18 07:34:54 2024 +0300
+
+    Backend Setup  Drizzle orm
+
+[33mcommit 65846ef31a2f398ace0f0c5da553269e7cf05d13[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Wed Sep 18 04:36:31 2024 +0300
+
+    Generate AI Content With Gemini API
+
+[33mcommit dab7f9ca239d8e41f9d8731d36ddc844f79a103a[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Wed Sep 18 03:18:41 2024 +0300
+
+    Dyanamic Form Display +
+    Add Rich Text Editor For Output
+
+[33mcommit 30b67579950bce542b815851b2fddac19e2b522b[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Tue Sep 17 06:11:55 2024 +0300
+
+    Search For Templete
+
+[33mcommit 4bf7da6c4439f4f64f6387d8f6dcdd5bb10ec46f[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Tue Sep 17 05:52:04 2024 +0300
+
+    Templete list UI
+
+[33mcommit f4b32ec18cfd6ce4a19cdde7e93084ae55244f19[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Tue Sep 17 05:17:09 2024 +0300
+
+    Dashboard Layout
+
+[33mcommit 362d6daf78edefb4d05ff86baa49f075d4ba4b24[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Tue Sep 17 02:21:37 2024 +0300
+
+    auth Use Clerck
+
+[33mcommit c61798788205f23dd4e9c49a83fe0e29edb2c705[m
+Author: “Eslam“ <“aslamalmswdya@gmail.com”>
+Date:   Tue Sep 17 01:18:23 2024 +0300
+
+    inital Comment
