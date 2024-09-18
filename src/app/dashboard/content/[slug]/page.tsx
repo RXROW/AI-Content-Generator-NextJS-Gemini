@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import FromSection from "../../_components/FromSection";
 import OutputSection from "../../_components/OutputSection";
 import { ITemplate } from "../../_components/TemplateList";
@@ -13,6 +13,8 @@ import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
+import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
+import { useRouter } from "next/navigation";
 
 interface IProps {
   params: {
@@ -21,9 +23,11 @@ interface IProps {
 }
 
 const CreateContent = (props: IProps) => {
+  const router = useRouter();
   const { user } = useUser();
   const [loading, setLoading] = useState<boolean>(false);
   const [AIResult, setAIResult] = useState<string>("");
+  const { totalUsage, setTotalUsage }:any = useContext(TotalUsageContext);
 
   const selectedTemplate: ITemplate | undefined = Templates.find(
     (item) => item.slug === props.params.slug
@@ -31,6 +35,13 @@ const CreateContent = (props: IProps) => {
 
   const generateAIContent = async (formData: any) => {
     try {
+      if (totalUsage >= 10000) {
+        console.log("Please upgrade your account.");
+        alert("You have reached your usage limit. Please upgrade your account.");
+        router.push("/dashboard/billing");
+        return;
+      }
+
       setLoading(true);
 
       const selectedPrompt = selectedTemplate?.aiPromt;
@@ -44,6 +55,7 @@ const CreateContent = (props: IProps) => {
       await saveToDB(formData, selectedTemplate?.slug, aiResponseText, user);
     } catch (error) {
       console.error("Error generating AI content:", error);
+      alert("An error occurred while generating content.");
     } finally {
       setLoading(false);
     }
@@ -62,11 +74,12 @@ const CreateContent = (props: IProps) => {
           slug: slug || "",
           aiResponse: aiResponse || "",
           createdBy: user.primaryEmailAddress?.emailAddress || "Unknown",
-          createAt: moment().format('YYYY-MM-DD'),
+          createAt: moment().format("YYYY-MM-DD"),
         });
       }
     } catch (error) {
       console.error("Error saving AI content to DB:", error);
+      alert("An error occurred while saving the content.");
     }
   };
 
