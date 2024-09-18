@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button";
 import { Loader2Icon } from "lucide-react";
 
 interface IProps {
-  slectedTemplete?: ITemplate;
+  selectedTemplate?: ITemplate;
   userFormInput: any;
   loading: boolean;
 }
 
-const FromSection = ({ slectedTemplete, userFormInput, loading }: IProps) => {
+const FromSection = ({ selectedTemplate, userFormInput, loading }: IProps) => {
   const [formData, setFormData] = useState<any>();
   const handleInputChange = (event: any) => {
     const { value, name } = event.target;
@@ -30,18 +30,18 @@ const FromSection = ({ slectedTemplete, userFormInput, loading }: IProps) => {
   return (
     <div className=" p-5 rounded-md border shadow-md bg-white">
       <Image
-        src={slectedTemplete?.icon || ""}
+        src={selectedTemplate?.icon || ""}
         width={70}
         height={70}
         alt="icon"
       />
       <h2 className=" font-semibold text-2xl my-2 text-mainColor ">
-        {slectedTemplete?.name}
+        {selectedTemplate?.name}
       </h2>
-      <p className=" text-gray-500 text-sm">{slectedTemplete?.desc}</p>
+      <p className=" text-gray-500 text-sm">{selectedTemplate?.desc}</p>
 
       <form className=" mt-6" onSubmit={onSubmit}>
-        {slectedTemplete?.form?.map((item, index) => (
+        {selectedTemplate?.form?.map((item, index) => (
           <div className=" my-2 flex flex-col gap-2 mb-3 " key={index}>
             <label className=" font-semibold">{item.label}</label>
             {item.field == "input" ? (
