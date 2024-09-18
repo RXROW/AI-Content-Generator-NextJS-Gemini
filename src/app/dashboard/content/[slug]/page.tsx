@@ -12,6 +12,7 @@ import { chatSession } from "@/utils/ai";
 import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
+import moment from "moment";
 
 interface IProps {
   params: {
@@ -61,6 +62,7 @@ const CreateContent = (props: IProps) => {
           slug: slug || "",
           aiResponse: aiResponse || "",
           createdBy: user.primaryEmailAddress?.emailAddress || "Unknown",
+          createAt: moment().format('YYYY-MM-DD'),
         });
       }
     } catch (error) {

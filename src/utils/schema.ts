@@ -7,5 +7,5 @@ export const AIOutput = pgTable("aiOutput", {
   slug: varchar("slug", { length: 255 }).notNull(),
   aiResponse: text("aiResponse"),
   createdBy: varchar("email", { length: 255 }).notNull(),
-  createAt: timestamp("createAt").defaultNow(),
+  createAt: varchar("createAt")
 });
