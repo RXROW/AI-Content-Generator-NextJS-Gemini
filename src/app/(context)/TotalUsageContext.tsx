@@ -8,3 +8,12 @@ interface TotalUsageContextType {
 }
  
 export const TotalUsageContext = createContext<TotalUsageContextType | null>(null);
+
+
+interface SideBarContextType {
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+ 
+export const SideBarContext = createContext<SideBarContextType | boolean>(true);

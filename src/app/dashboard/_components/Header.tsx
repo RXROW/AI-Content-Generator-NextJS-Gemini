@@ -1,25 +1,44 @@
-import { Search } from 'lucide-react';
-import React from 'react';
+"use client";
+import React, { useContext } from "react";
+import { Search, Menu, X } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
+import { SideBarContext } from "@/app/(context)/TotalUsageContext";
 
-const Header = () => {
+const Header: React.FC = () => {
+  const { isSidebarOpen, setIsSidebarOpen }: any = useContext(SideBarContext);
+
+  const handleSidebarToggle = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="p-5 shadow-lg border-b-2 flex justify-between items-center bg-white  flex-col md:flex-row">
+    <header className="p-4 shadow-md border-b-2 flex flex-col md:flex-row items-center justify-between bg-white">
       {/* Search Bar */}
-      <div className="flex items-center p-2 gap-2 border border-gray-200 rounded-sm w-full max-w-xl bg-gray-50">
-        <Search className="text-gray-400" />
+      <div className="flex items-center gap-2 border border-gray-300 rounded-md bg-gray-100 max-w-lg w-full">
+        <Search className="text-gray-500 ml-2" />
         <input
           type="text"
           placeholder="Search..."
-          className="outline-none bg-transparent placeholder-gray-500 text-gray-700 w-full"
+          className="bg-transparent outline-none placeholder-gray-600 text-gray-800 flex-grow py-1 px-2"
         />
       </div>
-      {/* Membership Banner */}
-      <div>
-        <h2 className="bg-[#8046FD] py-1 mt-5  md:mt-0 px-3 rounded-full text-white text-[14px]">
+
+      {/* Membership Banner and User Button */}
+      <div className="flex items-center gap-4 mt-4 md:mt-0">
+        <h2 className="bg-purple-600 py-1 px-4 rounded-full text-white text-sm font-semibold">
           Join New Membership from $9.99/Month
         </h2>
+        <UserButton />
+        {/* Burger Menu Button */}
+        <button onClick={handleSidebarToggle} className="md:hidden flex items-center">
+          {isSidebarOpen ? (
+            <X className="w-6 h-6 text-red-600 ring-1 rounded-full ring-red-500" />
+          ) : (
+            <Menu className="w-6 h-6 text-purple-500" />
+          )}
+        </button>
       </div>
-    </div>
+    </header>
   );
 };
 

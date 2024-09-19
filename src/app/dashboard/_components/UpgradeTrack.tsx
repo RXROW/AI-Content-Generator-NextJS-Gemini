@@ -6,6 +6,7 @@ import { useUser } from "@clerk/nextjs";
 import React, { useContext, useEffect, useState } from "react";
 import { eq } from "drizzle-orm";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
+import Link from "next/link";
 
 // Define the type for AIOutput data structure if available
 interface AIOutputData {
@@ -14,7 +15,7 @@ interface AIOutputData {
 }
 
 
-const TOTLAL_WORDS=20000;
+export const TOTLAL_WORDS=20000;
 const UpgradeTrack = () => {
   const { user } = useUser();
   const { totalUsage, setTotalUsage }:any = useContext(TotalUsageContext);
@@ -53,7 +54,7 @@ const UpgradeTrack = () => {
 
   return (
     <div className="m-5 space-y-4">
-      <div className="rounded-lg text-white p-4 bg-mainColor shadow-md">
+      <div className="rounded-lg text-white p-4 bg-mainColor shadow-md mb-5">
         <h2 className="text-lg font-semibold">Cardits</h2>
 
         {/* Progress Bar */}
@@ -68,6 +69,8 @@ const UpgradeTrack = () => {
       </div>
 
       {/* Upgrade Button */}
+      <Link href="/dashboard/pricing " >
+
       <Button
         className="w-full bg-transparent text-mainColor py-4 
                    hover:bg-mainColor hover:text-white hover:ring-transparent 
@@ -75,6 +78,7 @@ const UpgradeTrack = () => {
       >
         Upgrade Account
       </Button>
+      </Link>
     </div>
   );
 };

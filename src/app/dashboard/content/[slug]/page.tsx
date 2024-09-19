@@ -15,6 +15,7 @@ import { useUser } from "@clerk/nextjs";
 import moment from "moment";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import { useRouter } from "next/navigation";
+import { TOTLAL_WORDS } from "../../_components/UpgradeTrack";
 
 interface IProps {
   params: {
@@ -35,8 +36,7 @@ const CreateContent = (props: IProps) => {
 
   const generateAIContent = async (formData: any) => {
     try {
-      if (totalUsage >= 10000) {
-        console.log("Please upgrade your account.");
+      if (totalUsage >= TOTLAL_WORDS) {
         alert("You have reached your usage limit. Please upgrade your account.");
         router.push("/dashboard/billing");
         return;

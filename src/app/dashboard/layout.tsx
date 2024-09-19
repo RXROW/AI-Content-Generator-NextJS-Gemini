@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { useState } from "react";
-import { TotalUsageContext } from "../(context)/TotalUsageContext";
+import { SideBarContext, TotalUsageContext } from "../(context)/TotalUsageContext";
 import Header from "./_components/Header";
 import SideBar from "./_components/SideBar";
 
@@ -10,20 +10,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [totalUsage, setTotalUsage] = useState<number>(0);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+
 
   return (
-    <TotalUsageContext.Provider value={{totalUsage ,setTotalUsage}}>
-      
+    <SideBarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
+    <TotalUsageContext.Provider value={{ totalUsage, setTotalUsage }}>
 
-    <div className="flex justify-between bg-slate-100 h-screen  ">
-      <div className="md:w-64 hidden md:block fixed   ">
-        <SideBar />
+      <div className="flex justify-between bg-slate-100 h-screen  ">
+        <div className="md:w-64 block fixed  z-50 w-[60%] ">
+          <SideBar />
+        </div>
+        <div className="md:ml-64 w-full ">
+          <Header />
+
+          {children}
+        </div>
       </div>
-      <div className="md:ml-64 w-full ">
-        <Header/>
-        
-        {children}</div>
-    </div>
-    </TotalUsageContext.Provider>
+      </TotalUsageContext.Provider>
+      </SideBarContext.Provider>
+
+
   );
 }
