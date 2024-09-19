@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import "@toast-ui/editor/dist/toastui-editor.css";
-import { Editor } from "@toast-ui/react-editor";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css"; // Import Quill's CSS
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 
@@ -9,25 +9,22 @@ interface IProps {
 }
 
 const OutputSection = ({ AIResult }: IProps) => {
-  const editorRef = useRef<Editor | null>(null);
+  const quillRef = useRef<ReactQuill | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const editorInstance = editorRef.current?.getInstance();
-    
-     
-    if (editorInstance && AIResult) {
-      editorInstance.setMarkdown(AIResult);
+    if (quillRef.current) {
+      const editor = quillRef.current.getEditor();
+      editor.setContents(editor.clipboard.convert(AIResult));
     }
   }, [AIResult]);
 
   const handleCopy = () => {
-    const editorInstance = editorRef.current?.getInstance();
-    if (editorInstance) {
-      const content = editorInstance.getMarkdown();
+    if (quillRef.current) {
+      const editor = quillRef.current.getEditor();
+      const content = editor.root.innerHTML;
       navigator.clipboard.writeText(content);
       
-     
       setCopied(true);
       setTimeout(() => setCopied(false), 5000);
     }
@@ -46,15 +43,12 @@ const OutputSection = ({ AIResult }: IProps) => {
         </Button>
       </div>
 
-      <Editor
-        ref={editorRef}
-        initialValue="Your result will appear here!"
-        height="600px"
-        initialEditType="wysiwyg"
-        useCommandShortcut={true}
-        onChange={() =>
-          console.log(editorRef.current?.getInstance().getMarkdown())
-        }
+      <ReactQuill
+        ref={quillRef}
+        value={AIResult}
+        onChange={() => console.log(quillRef.current?.getEditor().root.innerHTML)}
+        theme="snow"
+        style={{ height: "600px" }}
       />
     </div>
   );
