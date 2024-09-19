@@ -62,7 +62,7 @@ const FromSection = ({ selectedTemplate, userFormInput, loading }: IProps) => {
 
         <Button
           type="submit"
-          className="w-full bg-mainColor hover:bg-transparent hover:text-mainColor hover:ring-mainColor ring-1 ring-transparent py-5"
+          className="w-full bg-mainColor hover:bg-transparent hover:text-mainColor hover:ring-mainColor ring-1 ring-transparent py-5 text-white"
           disabled={loading}
         >
           {loading&&<Loader2Icon className=" animate-spin "/>}

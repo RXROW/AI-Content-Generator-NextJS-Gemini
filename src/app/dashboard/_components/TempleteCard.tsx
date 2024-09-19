@@ -1,9 +1,9 @@
 import React from "react";
-import { ITemplate } from "./TemplateList";
+ 
 import Image from "next/image";
 import Link from "next/link";
 
-const TempleteCard = (item: ITemplate) => {
+const TempleteCard = (item: any) => {
   return (
     <Link href={`/dashboard/content/${item.slug}`}>
 

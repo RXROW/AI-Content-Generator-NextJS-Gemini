@@ -1,57 +1,50 @@
-import React, { useEffect, useRef, useState } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; // Import Quill's CSS
+import React, { useEffect, useRef } from "react";
+import "@toast-ui/editor/dist/toastui-editor.css";
+import { Editor } from "@toast-ui/react-editor";
+ 
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 
-interface IProps {
+interface Props {
   AIResult: string;
 }
 
-const OutputSection = ({ AIResult }: IProps) => {
-  const quillRef = useRef<ReactQuill | null>(null);
-  const [copied, setCopied] = useState(false);
+function OutputSection({ AIResult }: Props) {
+  // Ref is typed to Editor component's instance (null initially)
+  const editorRef = useRef<any>(null);
 
   useEffect(() => {
-    if (quillRef.current) {
-      const editor = quillRef.current.getEditor();
-      editor.setContents(editor.clipboard.convert(AIResult));
+    if (editorRef.current) {
+      // Get the instance of the editor from the ref
+      const editorInstance = editorRef.current.getInstance();
+      editorInstance.setMarkdown(AIResult); // Set the markdown content
     }
   }, [AIResult]);
 
-  const handleCopy = () => {
-    if (quillRef.current) {
-      const editor = quillRef.current.getEditor();
-      const content = editor.root.innerHTML;
-      navigator.clipboard.writeText(content);
-      
-      setCopied(true);
-      setTimeout(() => setCopied(false), 5000);
-    }
-  };
-
   return (
-    <div className="bg-white border shadow-md rounded-md">
-      <div className="flex items-center justify-between p-5">
+    <div className="bg-white shadow-lg border rounded-lg">
+      <div className="flex justify-between items-center p-5">
         <h2 className="font-medium text-lg">Your Result</h2>
         <Button
-          onClick={handleCopy}
-          className="flex items-center gap-1 bg-mainColor hover:bg-transparent hover:text-mainColor hover:ring-mainColor ring-1 ring-transparent py-5"
+          className="flex gap-2"
+          onClick={() => navigator.clipboard.writeText(AIResult)}
         >
-          <Copy className="mr-1" />
-          {copied ? "Copied" : "Copy"}
+          <Copy className="w-4 h-4" />
+          Copy
         </Button>
       </div>
-
-      <ReactQuill
-        ref={quillRef}
-        value={AIResult}
-        onChange={() => console.log(quillRef.current?.getEditor().root.innerHTML)}
-        theme="snow"
-        style={{ height: "600px" }}
+      <Editor
+        ref={editorRef}
+        initialValue="Your result will appear here"
+        height="600px"
+        initialEditType="wysiwyg"
+        useCommandShortcut={true}
+        onChange={() =>
+          console.log(editorRef.current?.getInstance().getMarkdown()) // Get the markdown on change
+        }
       />
     </div>
   );
-};
+}
 
 export default OutputSection;

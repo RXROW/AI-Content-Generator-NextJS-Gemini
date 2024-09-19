@@ -1,7 +1,8 @@
 "use client";
-import { Templates } from "@/data/data";
+ 
 import React, { useEffect, useState } from "react";
 import TempleteCard from "./TempleteCard";
+import { Templates } from "@/data/data";
 
 export interface ITemplate {
   name: string;
@@ -32,7 +33,7 @@ const TemplateList = ({ userSearchInput }: any) => {
   }, [userSearchInput]);
   return (
     <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5    ">
-      {templeteList.map((item: ITemplate, index: number) => (
+      {templeteList.map((item:any, index: number) => (
         <TempleteCard {...item} />
       ))}
     </div>

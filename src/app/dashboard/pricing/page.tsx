@@ -1,4 +1,5 @@
 import React from "react";
+import { TOTLAL_WORDS } from "../_components/UpgradeTrack";
 
 const plans = [
   {
@@ -22,7 +23,7 @@ const plans = [
     name: "Starter",
     price: "10",
     features: [
-      "20000 Words",
+      `40000 Words`,
       "1GB of storage",
       "Email support"
     ],

@@ -3,7 +3,6 @@
 import React, { useContext, useState } from "react";
 import FromSection from "../../_components/FromSection";
 import OutputSection from "../../_components/OutputSection";
-import { ITemplate } from "../../_components/TemplateList";
 import { Templates } from "@/data/data";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -28,9 +27,9 @@ const CreateContent = (props: IProps) => {
   const { user } = useUser();
   const [loading, setLoading] = useState<boolean>(false);
   const [AIResult, setAIResult] = useState<string>("");
-  const { totalUsage, setTotalUsage }:any = useContext(TotalUsageContext);
+  const { totalUsage, setTotalUsage }: any = useContext(TotalUsageContext);
 
-  const selectedTemplate: ITemplate | undefined = Templates.find(
+  const selectedTemplate: any = Templates.find(
     (item) => item.slug === props.params.slug
   );
 
@@ -44,7 +43,7 @@ const CreateContent = (props: IProps) => {
 
       setLoading(true);
 
-      const selectedPrompt = selectedTemplate?.aiPromt;
+      const selectedPrompt = selectedTemplate?.aiPrompt; // FIX: Corrected the property name
       const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt;
 
       const result = await chatSession.sendMessage(finalAIPrompt);
@@ -86,7 +85,7 @@ const CreateContent = (props: IProps) => {
   return (
     <div className="p-10 bg-slate-100">
       <Link href="/dashboard">
-        <Button className="bg-mainColor hover:bg-transparent hover:text-mainColor hover:ring-mainColor ring-1 ring-transparent py-5">
+        <Button className="bg-mainColor hover:bg-transparent hover:text-mainColor hover:ring-mainColor ring-1 ring-transparent text-white py-5">
           <ArrowLeft /> Back
         </Button>
       </Link>
@@ -97,7 +96,7 @@ const CreateContent = (props: IProps) => {
           userFormInput={(formData: any) => generateAIContent(formData)}
         />
         <div className="col-span-2 mt-5 sm:mt-0">
-          <OutputSection AIResult={AIResult} />
+          <OutputSection AIResult={AIResult} /> {/* FIX: Passed correct prop */}
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import Header from "@/components/Header";
+import Hero from "@/components/Hero";
 
 const Home: React.FC = () => {
   const { user, isLoaded } = useUser();
@@ -29,37 +30,13 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className=" h-screen  ">
       <Header />
-
+      <Hero/>
       {/* Main Content Section */}
-      <section className="text-gray-600 body-font">
+      <section className="text-gray-600 body-font  ">
         <div className="container px-5 py-24 mx-auto">
-          {/* Heading */}
-          <div className="text-center mb-20">
-            <h2 className="text-xs text-primary tracking-widest font-medium title-font mb-1">
-              AI Content Generator Powered by SAMIR
-            </h2>
-            <h1 className="text-2xl sm:text-3xl font-semibold title-font mb-4 text-gray-900">
-              Generate Content, Keywords, and Descriptions with Contentful AI
-            </h1>
-            <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-700">
-              Unlock your creative potential with our AI content generator.
-              Designed for writers, marketers, and content creators, our
-              advanced tool uses cutting-edge technology to generate
-              high-quality, personalized content in seconds. Whether you need
-              engaging blog posts, compelling ad copy, or captivating social
-              media updates, our AI assists you every step of the way.
-            </p>
-            <div className="mt-8">
-              <button
-                onClick={() => router.push("/dashboard")}
-                className="text-white bg-mainColor hover:bg-primary-dark font-medium py-2 px-6 rounded-lg shadow-md transition duration-300"
-              >
-                Get Started
-              </button>
-            </div>
-          </div>
+    
 
           {/* Features Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

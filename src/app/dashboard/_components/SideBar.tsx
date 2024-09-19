@@ -5,12 +5,13 @@ import { usePathname, useRouter } from "next/navigation";
 import Logo from "./Logo";
 import UpgradeTrack from "./UpgradeTrack";
 import { SideBarContext } from "@/app/(context)/TotalUsageContext";
+import Link from "next/link";
 
 const MenuList = [
-  { name: "Home", icon: Home, path: "/dashboard" },
-  { name: "History", icon: FileClock, path: "/dashboard/history" },
-  { name: "Pricing", icon: WalletCards, path: "/dashboard/pricing" },
-  { name: "Profile", icon: User, path: "/dashboard/profile" },
+  { name: "Home", icon: Home, path: "/dashboard/" },
+  { name: "History", icon: FileClock, path: "/dashboard/history/" },
+  { name: "Pricing", icon: WalletCards, path: "/dashboard/pricing/" },
+  { name: "Profile", icon: User, path: "/dashboard/profile/" },
 ];
 
 const SideBar: React.FC = () => {
@@ -51,7 +52,10 @@ const SideBar: React.FC = () => {
   return (
     <div className={sidebarClasses}>
       <div className="flex justify-center mb-6">
-        <Logo />
+        <Link href="/">
+         
+          <Logo /> 
+        </Link>
       </div>
 
       <div className="w-full">

@@ -15,7 +15,7 @@ interface AIOutputData {
 }
 
 
-export const TOTLAL_WORDS=20000;
+export const TOTLAL_WORDS=40000;
 const UpgradeTrack = () => {
   const { user } = useUser();
   const { totalUsage, setTotalUsage }:any = useContext(TotalUsageContext);

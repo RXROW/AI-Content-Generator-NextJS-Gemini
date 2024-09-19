@@ -30,7 +30,7 @@ const Header: React.FC = () => {
 
         <button
           onClick={handleSidebarToggle}
-          className="md:hidden flex items-center"
+          className=" flex items-center"
         >
           {isSidebarOpen ? (
             <X className="w-6 h-6 text-red-600 ring-1 rounded-full ring-red-500" />
