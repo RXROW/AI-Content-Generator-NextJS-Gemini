@@ -13,9 +13,6 @@ const Dashboard: React.FC = () => {
   const router = useRouter();
 
   React.useEffect(() => {
-    console.log("isLoaded:", isLoaded);
-    console.log("user:", user);
-
     if (isLoaded) {
       if (!user) {
         router.replace("/sign-in");

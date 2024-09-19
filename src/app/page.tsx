@@ -3,6 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
+import Header from "@/components/Header";
 
 const Home: React.FC = () => {
   const { user, isLoaded } = useUser();
@@ -29,36 +30,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      {/* Header Section */}
-      <header className="text-gray-600 body-font">
-        <div className="container mx-auto flex justify-between p-5 flex-col md:flex-row items-center">
-          {/* Logo and Title */}
-          <div className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <span className="ml-3 text-base font-bold text-[#8046fd] font-mono">
-              AI Content Generator
-            </span>
-          </div>
-
-          {/* Get Started Button */}
-          <button
-            onClick={() => router.push("/dashboard")}
-            className="inline-flex items-center shadow-lg border border-transparent hover:bg-gray-100 py-1 px-3 focus:outline-none text-white hover:text-[#8046fd] bg-[#8046fd] rounded text-lg font-mono font-bold mt-4 md:mt-0 transition-transform transform hover:scale-105"
-          >
-            Get Started
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className="w-4 h-4 ml-1"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </button>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content Section */}
       <section className="text-gray-600 body-font">
@@ -68,10 +40,10 @@ const Home: React.FC = () => {
             <h2 className="text-xs text-primary tracking-widest font-medium title-font mb-1">
               AI Content Generator Powered by SAMIR
             </h2>
-            <h1 className="text-2xl sm:text-3xl font-medium title-font mb-4 text-gray-900">
+            <h1 className="text-2xl sm:text-3xl font-semibold title-font mb-4 text-gray-900">
               Generate Content, Keywords, and Descriptions with Contentful AI
             </h1>
-            <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-700">
               Unlock your creative potential with our AI content generator.
               Designed for writers, marketers, and content creators, our
               advanced tool uses cutting-edge technology to generate
@@ -79,6 +51,14 @@ const Home: React.FC = () => {
               engaging blog posts, compelling ad copy, or captivating social
               media updates, our AI assists you every step of the way.
             </p>
+            <div className="mt-8">
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="text-white bg-mainColor hover:bg-primary-dark font-medium py-2 px-6 rounded-lg shadow-md transition duration-300"
+              >
+                Get Started
+              </button>
+            </div>
           </div>
 
           {/* Features Grid */}
@@ -107,12 +87,12 @@ const Home: React.FC = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="px-8 py-6 border-l-2 border-gray-200 border-opacity-60 shadow-lg rounded-lg"
+                className="px-8 py-6 border-l-2 border-gray-200 border-opacity-60 shadow-lg rounded-lg hover:bg-gray-100 transition duration-300"
               >
-                <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">
+                <h2 className="text-lg sm:text-xl text-gray-900 font-semibold title-font mb-2">
                   {feature.title}
                 </h2>
-                <p className="leading-relaxed text-base mb-4">
+                <p className="leading-relaxed text-base text-gray-600">
                   {feature.description}
                 </p>
               </div>

@@ -20,7 +20,7 @@ const HistoryClient: React.FC<HistoryProps> = ({ initialHistoryList }) => {
         setUserEmail(email); // Set the user's email address
         const data = await fetchHistory(email);
         setHistoryList(data);
-        console.log(data);
+       
       }
     };
     

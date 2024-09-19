@@ -6,7 +6,6 @@ import Logo from "./Logo";
 import UpgradeTrack from "./UpgradeTrack";
 import { SideBarContext } from "@/app/(context)/TotalUsageContext";
 
-// Define the menu items
 const MenuList = [
   { name: "Home", icon: Home, path: "/dashboard" },
   { name: "History", icon: FileClock, path: "/dashboard/history" },
@@ -19,35 +18,32 @@ const SideBar: React.FC = () => {
   const path = usePathname();
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  // Access the sidebar context
   const sidebarContext = useContext(SideBarContext);
 
   if (!sidebarContext) {
-    return <div>Loading...</div>; // Handle case where context is not available
+    return <div>Loading...</div>;
   }
 
   const { isSidebarOpen, setIsSidebarOpen }: any = sidebarContext;
 
-  // Detect screen size
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Check on mount
-    window.addEventListener("resize", handleResize); // Listen to resize events
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize); // Clean up listener
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleMenuClick = (path: string) => {
     router.push(path);
-    if (isMobile && isSidebarOpen) { // Close only if on mobile
+    if (isMobile && isSidebarOpen) {
       setIsSidebarOpen(false);
     }
   };
 
-  // Calculate the class names based on sidebar state
   const sidebarClasses = `p-5 border-r h-screen flex flex-col items-center bg-white transition-transform ${
     isSidebarOpen ? "translate-x-0" : "-translate-x-full"
   }`;
@@ -62,10 +58,16 @@ const SideBar: React.FC = () => {
         {MenuList.map((menu, index) => {
           const isActive = path === menu.path;
           const menuItemClasses = `flex my-3 items-center gap-3 p-2 rounded-lg cursor-pointer transition-colors duration-200 ${
-            isActive ? "bg-[#8046FD] text-white" : "text-gray-700 hover:bg-gray-200"
+            isActive
+              ? "bg-[#8046FD] text-white"
+              : "text-gray-700 hover:bg-gray-200"
           }`;
-          const iconClasses = `w-6 h-6 ${isActive ? "text-white" : "text-gray-600"}`;
-          const textClasses = `text-lg ${isActive ? "font-semibold" : "font-light"}`;
+          const iconClasses = `w-6 h-6 ${
+            isActive ? "text-white" : "text-gray-600"
+          }`;
+          const textClasses = `text-lg ${
+            isActive ? "font-semibold" : "font-light"
+          }`;
 
           return (
             <div
