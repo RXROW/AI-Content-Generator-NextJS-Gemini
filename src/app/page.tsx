@@ -64,7 +64,7 @@ const Home: React.FC = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="px-8 py-6 border-l-2 border-gray-200 border-opacity-60 shadow-lg rounded-lg hover:bg-gray-100 transition duration-300"
+                className="px-8 py-6   border-gray-200 border hover:border-mainColor  rounded-lg hover:bg-gray-50 transition duration-300"
               >
                 <h2 className="text-lg sm:text-xl text-gray-900 font-semibold title-font mb-2">
                   {feature.title}

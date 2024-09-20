@@ -9,8 +9,8 @@ const SearchHero = ({onSearchInput}:any) => {
         <p className="text-xl  font-light text-white">What would you like to create today?</p>
         <div className="w-full flex justify-center">
             <div className="flex gap-2 items-center p-2 border rounded-md bg-white my-5 w-[100%]">
-                <Search className="text-primary" />
-                <input type="text" placeholder="Search" className="bg-transparent w-full outline-none text-black"  onChange={(event)=>onSearchInput(event.target.value)}/>
+                <Search className=" text-gray-400" />
+                <input type="text" placeholder="Search" className="bg-transparent w-full outline-none text-gray-600"  onChange={(event)=>onSearchInput(event.target.value)}/>
             </div>
         </div>
       </div>

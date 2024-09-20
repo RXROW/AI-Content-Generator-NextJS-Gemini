@@ -21,7 +21,7 @@ const HeroSection = () => {
       <Link href='/dashboard/'
          > 
          <Button
-                   className=" bg-mainColor hover:bg-transparent mt-3 hover:text-mainColor hover:ring-mainColor ring-1 ring-mainColor py-5 text-white"
+                   className=" bg-mainColor hover:bg-transparent mt-3 hover:text-mainColor hover:ring-mainColor border ring-mainColor py-6 px-5 text-white text-2xl hover:scale-105"
 
           >
  Get started

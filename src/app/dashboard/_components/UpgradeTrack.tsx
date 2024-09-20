@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { eq } from "drizzle-orm";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import Link from "next/link";
@@ -69,7 +69,7 @@ const UpgradeTrack = () => {
       </div>
 
       {/* Upgrade Button */}
-      <Link href="/dashboard/pricing " >
+      <Link href="/dashboard/pricing" >
 
       <Button
         className="w-full bg-transparent text-mainColor py-4 
