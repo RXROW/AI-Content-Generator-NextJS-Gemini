@@ -11,6 +11,11 @@
 - **Modern UI**: Built with Chadcn UI and styled using TailwindCSS for a sleek and responsive design.
 - **Database Management**: Drizzle ORM for flexible and type-safe database interactions.
 
+- ![Alt text](https://res.cloudinary.com/dyv3dluov/image/upload/v1726836415/Home_malhgv.png)
+- ![Alt text](https://res.cloudinary.com/dyv3dluov/image/upload/v1726836415/Dashboard_dy1oip.png)
+- ![Alt text](https://res.cloudinary.com/dyv3dluov/image/upload/v1726836415/content1_twkdof.png)
+- ![Alt text](https://res.cloudinary.com/dyv3dluov/image/upload/v1726836415/content2_zncfhp.png)
+
 ## Tech Stack
 
 - **Next.js 14**: A React framework for server-side rendering and static site generation.
