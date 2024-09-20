@@ -1,4 +1,4 @@
-# AI Content Generator
+# AI Content Generator SASS APP
 
 An AI-powered content generation platform using GiminAI, built with Next.js 14, TypeScript, TailwindCSS, and Sass.
 This full-stack application leverages modern technologies to provide dynamic content generation features, real-time customization, and flexible database management.
