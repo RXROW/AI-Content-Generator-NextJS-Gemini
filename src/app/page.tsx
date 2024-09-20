@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Footer from "@/components/Footer";
 
 const Home: React.FC = () => {
   const { user, isLoaded } = useUser();
@@ -76,7 +77,9 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
+        
       </section>
+      <Footer/>
     </div>
   );
 };
